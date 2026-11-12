@@ -72,7 +72,7 @@ def kron(*args: np.matrix) -> np.matrix:
     out = np.kron(args[0], args[1])
     for j in range(2, len(args)):
         out = np.kron(out, args[j])
-    return out
+    return out # type: ignore
 
 def duplicate_bell_state(bell, rep):
     """
