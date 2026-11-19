@@ -69,10 +69,8 @@ class Hardware:
     def __init__(self, 
                  phys_e: mpmath.mpf, 
                  bell_e: mpmath.mpf, 
-                 t_e: mpmath.mpf,
                  bell_time_in_seconds: float, 
                  op_time_in_seconds: float, 
-                 qubits_per_node: int,
                  ecc: ECC):
         self.phys_e = phys_e
         self.bell_e = bell_e
@@ -87,7 +85,7 @@ class Hardware:
         return logical_time_step / self.bell_time
 
 class Factory:
-    def __init__(self, name, pout: mpmath.mpf, pxerror: mpmath.mpf, pyerror: mpmath.mpf, pzerror: mpmath.mpf, duration, qubits, lastdist, inputs, outputs=1):
+    def __init__(self, name, pout: mpmath.mpf, pxerror: mpmath.mpf, pyerror: mpmath.mpf, pzerror: mpmath.mpf, duration, qubits, inputs, outputs=1):
         self.name = name 
         self.pout = pout
         self.pxerror = pxerror
@@ -99,5 +97,5 @@ class Factory:
         self.spacetime = duration*qubits
         self.inputs = math.ceil(inputs)
         self.outputs = outputs
-        self.lastdist = lastdist
+        self.production_rate = math.ceil(duration / (outputs))
 
